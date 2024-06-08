@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CoreConcept from './components/CoreConcept/CoreConcept';
 import ExampleDesc from './components/ExampleDesc/ExampleDesc';
 import Header from './components/Header/Header';
@@ -8,6 +8,9 @@ import { CORE_CONCEPTS, EXAMPLES } from './data';
 function App() {
   const [selectedTopic, setTabContent] = useState();
 
+  useEffect(() => {
+    console.log(`selectedTopic is changed: ${selectedTopic}`);
+  });
   let currentExample;
   setCurrentExample(selectedTopic);
 
