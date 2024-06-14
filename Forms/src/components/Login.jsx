@@ -1,6 +1,13 @@
 import { useRef } from "react";
 import { useInput } from "../hooks/useInput.js";
 
+const parseErrors = (errors) => {
+  return errors.map((err) => {
+    const prop = err.match(/'(\w+)'/)[1];
+    return prop[0].toUpperCase() + prop.slice(1) + " is required";
+  });
+};
+
 export default function Login() {
   // const email = useRef();
   // const [enteredPassword, setEnteredPassword] = useState("");
