@@ -1,15 +1,22 @@
 const redux = require('@reduxjs/toolkit');
-const initialState = { counter: 0 };
+const initialState = { counter: 0, showCounter: true };
 const counterReducer = (state = initialState, action) => {
   switch (action.type) {
     case "increment":
       return {
         ...state,
-        counter: state.counter + 1
+        counter: state.counter + 1,
+        showCounter: state.showCounter
       }
     case "decrement": return {
       ...state,
-      counter: state.counter - 1
+      counter: state.counter - 1,
+      showCounter: state.showCounter
+    }
+    case "toggle": return {
+      ...state,
+      showCounter: !state.showCounter,
+      counter: state.counter
     }
   }
   return state;
