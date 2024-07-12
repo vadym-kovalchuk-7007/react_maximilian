@@ -1,21 +1,18 @@
-import { useEffect, useState } from "react";
+import useHttp from "../hooks/useHttp";
+import ErrorC from "./ErrorC";
 import MealItem from "./MealItem";
 
-export default function Meals(params) {
-	const [loadedMeals, setLoadedMeals] = useState([]);
-	useEffect(() => {
-		async function fetchMeals() {
-			try {
-				const response = await fetch("http://localhost:3000/meals");
-				if (!response.ok) {
-				}
-				const meals = await response.json();
-				setLoadedMeals(meals);
-			} catch (err) {}
-		}
-		fetchMeals();
-	}, []);
+const requestConfig = {};
 
+export default function Meals() {
+	const {
+		data: loadedMeals,
+		isLoading,
+		error,
+	} = useHttp("http://localhost:3000/meals", requestConfig, []);
+
+	if (isLoading) return <p className="center">Fetching data</p>;
+	if (error) return <ErrorC title="Failed fetch meals" message={error} />;
 	return (
 		<ul id="meals">
 			{loadedMeals.map((el) => (
