@@ -1,9 +1,9 @@
-import Button from "./Button";
+import Button from './Button'
 
 export default function Sidebar({
+  onSelectProject,
   onStartAddProject,
   projects,
-  onSelectProject,
   selectedProjectId,
 }) {
   return (
@@ -17,11 +17,11 @@ export default function Sidebar({
       <ul className="mt-8">
         {projects.map((project) => {
           let cssClasses =
-            "my-1 w-full rounded-sm px-2 py-1 text-left hover:bg-stone-800 hover:text-stone-200";
+            'my-1 w-full rounded-sm px-2 py-1 text-left hover:bg-stone-800 hover:text-stone-200'
           if (project.id === selectedProjectId) {
-            cssClasses += " bg-stone-800 text-stone-200";
+            cssClasses += ' bg-stone-800 text-stone-200'
           } else {
-            cssClasses += " text-stone-400";
+            cssClasses += ' text-stone-400'
           }
           return (
             <li key={project.id}>
@@ -33,9 +33,9 @@ export default function Sidebar({
                 {project.title}
               </button>
             </li>
-          );
+          )
         })}
       </ul>
     </aside>
-  );
+  )
 }

@@ -1,11 +1,11 @@
 import Tasks from './Tasks'
 
 export default function SelectedProject({
+  onAddTask,
+  onDelete,
+  onDeleteTask,
   project,
   tasks,
-  onDelete,
-  onAddTask,
-  onDeleteTask,
 }) {
   const formatedDate = new Date(project.dueDate).toLocaleDateString('en-US', {
     day: 'numeric',
